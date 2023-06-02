@@ -9,7 +9,7 @@ const Header = () => {
         <h1 className="header__title">ToDoList</h1>
         <Dropdown />
       </div>
-      <a href="">
+      <a href="https://github.com/zPavel39/web-todo-test">
         <img className="header__image" src="/logo_gh.png" alt="GH" />
       </a>
     </header>
