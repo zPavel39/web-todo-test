@@ -1,10 +1,14 @@
 import React from "react";
 import "./Header.scss";
+import Dropdown from "../dropdown/dropdown";
 
 const Header = () => {
   return (
     <header className="header">
-      <h1 className="header__title">ToDoList</h1>
+      <div className="header__left">
+        <h1 className="header__title">ToDoList</h1>
+        <Dropdown />
+      </div>
       <a href="">
         <img className="header__image" src="/logo_gh.png" alt="GH" />
       </a>

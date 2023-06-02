@@ -6,6 +6,7 @@ import { observer } from "mobx-react-lite";
 interface propsModal {
   setActiveModal: (activeModal: boolean) => void
   activeModal: boolean
+  translate: (key: string) => string
 }
 
 const Modal = observer(({...props}:propsModal) => {
@@ -24,7 +25,7 @@ const Modal = observer(({...props}:propsModal) => {
         className="Modal__content"
         onClick={(e) => e.stopPropagation()}
       >
-        <FormTask activeModal={props.activeModal} setActiveModal={props.setActiveModal}/>
+        <FormTask activeModal={props.activeModal} setActiveModal={props.setActiveModal} translate={props.translate}/>
       </div>
     </div>
   );

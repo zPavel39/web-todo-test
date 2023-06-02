@@ -29,18 +29,21 @@ class TaskStore {
   delTask = (id: number) => {
     this.tasks = this.tasks.filter((task) => task.id !== id);
   };
+
   updateCompleted = (id: number) => {
     let taskUpdate = this.tasks.find((item) => item.id === id);
     if (taskUpdate) {
       taskUpdate.completed = !taskUpdate.completed;
     }
-    console.log('taskUpdate', taskUpdate)
     return this.tasks;
   };
+ // Запоминаем id таски при попытки и вызове модального окна изменить задачу 
   updateTaskOpenModel = (id: number) => {
     return this.idSearch = id
   }
+  // Обновление задачи
   updateTask = (task: TaskAction) => {
+    // поиск задачи из id.Search
     let taskUpdate = this.tasks.find((item) => item.id === this.idSearch)
     if (taskUpdate) {
       taskUpdate.title = task.title

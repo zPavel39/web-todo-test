@@ -4,6 +4,7 @@ import "./FormTask.scss";
 import { observer } from "mobx-react-lite";
 
 const FormTask = observer(({ ...props }: any) => {
+  
   const { createTask, updateTask } = tasksStore;
 
   const [titleValue, setTitleValue] = useState("");
@@ -43,20 +44,20 @@ const FormTask = observer(({ ...props }: any) => {
         }
       >
         <div className="form__left">
-          <label>Заголовок:</label>
+          <label>{props.translate('Title')}:</label>
           <input
             className="form__left_inputTitle"
             type="text"
             value={titleValue}
             onChange={(e) => setTitleValue(e.target.value)}
-            placeholder="Введите заголовок задачи"
+            placeholder={props.translate('TitlePH')}
           />
-          <label>Описание:</label>
+          <label>{props.translate('Description')}:</label>
           <textarea
             className="form__left_inputDescription"
             rows={4}
             maxLength={200}
-            placeholder="Введите описание задачи"
+            placeholder={props.translate('DescriptionPH')}
             value={descriptionValue}
             onChange={(e) => setDescriptionValue(e.target.value)}
           />
@@ -72,7 +73,7 @@ const FormTask = observer(({ ...props }: any) => {
             />
           </div>
           <button className="form__right_btnSubmit" type="submit">
-            Готово
+          {props.translate('Confirm')}
           </button>
         </div>
       </form>

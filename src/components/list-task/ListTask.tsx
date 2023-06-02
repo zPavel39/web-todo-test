@@ -6,9 +6,11 @@ import { observer } from "mobx-react-lite";
 interface props {
   setActiveModal: (activeModal: boolean) => void;
   activeModal: boolean;
+  translate: (key: string) => string;
 }
 const ListTask = observer(({ ...props }: props) => {
   const { tasks, delTask, updateCompleted, updateTaskOpenModel } = tasksStore;
+
 
   const callbacks = {
     delTask: (id: number) => {
@@ -46,19 +48,19 @@ const ListTask = observer(({ ...props }: props) => {
                     className="tasks__blockBtn_btn"
                     onClick={() => callbacks.updateTaskOpenModel(id)}
                   >
-                    Изменить
+                    {props.translate('Update')}
                   </button>
                   <button
                     className="tasks__blockBtn_btn"
                     onClick={() => updateCompleted(id)}
                   >
-                    Отметить
+                    {props.translate('Completed')}
                   </button>
                   <button
                     className="tasks__blockBtn_btn"
                     onClick={() => callbacks.delTask(id)}
                   >
-                    Удалить
+                    {props.translate('Remove')}
                   </button>
                 </div>
               </div>
