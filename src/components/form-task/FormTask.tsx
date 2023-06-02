@@ -4,8 +4,8 @@ import "./FormTask.scss";
 import { observer } from "mobx-react-lite";
 
 const FormTask = observer(({ ...props }: any) => {
-  
-  const { createTask, updateTask } = tasksStore;
+
+  const { createTask, updateTask, validation } = tasksStore;
 
   const [titleValue, setTitleValue] = useState("");
   const [descriptionValue, setDescriptionValue] = useState("");
@@ -33,6 +33,7 @@ const FormTask = observer(({ ...props }: any) => {
       });
       setTitleValue("");
       setDescriptionValue("");
+      props.setActiveModal(false)
     },
   };
   return (
@@ -44,9 +45,9 @@ const FormTask = observer(({ ...props }: any) => {
         }
       >
         <div className="form__left">
-          <label>{props.translate('Title')}:</label>
+          <label>{props.translate('Title')}: {titleValue.length !== 0 || validation ? '' : 'Не может быть пустым'}</label>
           <input
-            className="form__left_inputTitle"
+            className={titleValue.length !== 0 || validation ? "form__left_inputTitle" : "form__left_inputTitleValid"}
             type="text"
             value={titleValue}
             onChange={(e) => setTitleValue(e.target.value)}
