@@ -6,8 +6,17 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 24px;
-
+    gap: 10px;
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-left: 8px;
+        &_btn {
+            padding: 2px 4px;
+            cursor: pointer;
+        }
+    }
     &__list {
         display: flex;
         justify-content: space-between;

@@ -8,6 +8,9 @@
         "Title": "Title",
         "TitlePH": "Enter title task",
         "Description": "Description",
-        "DescriptionPH": "Enter description"
+        "DescriptionPH": "Enter description",
+        "Sort": "Sorting by",
+        "Active": "Active"
+
     }
 }

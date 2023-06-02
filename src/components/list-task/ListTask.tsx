@@ -8,8 +8,8 @@ interface props {
   activeModal: boolean;
   translate: (key: string) => string;
 }
-const ListTask = observer(({ ...props }: props) => {
-  const { tasks, delTask, updateCompleted, updateTaskOpenModel } = tasksStore;
+  const ListTask = observer(({ ...props }: props) => {
+  const { tasks, delTask, updateCompleted, updateTaskOpenModel, sortTasksList } = tasksStore;
 
 
   const callbacks = {
@@ -23,11 +23,20 @@ const ListTask = observer(({ ...props }: props) => {
       updateTaskOpenModel(id);
       props.setActiveModal(!props.activeModal);
     },
+    sortTasksList: (sort: string) => {
+      sortTasksList(sort)
+    }
   };
 
   return (
     <div className="container">
+      
       <ul className="tasks">
+      <div className="tasks__header">
+        <span>{props.translate('Sort')}:</span>
+        <button className="tasks__header_btn" onClick={() => sortTasksList('Date')}>{props.translate('Date')}</button>
+        <button className="tasks__header_btn" onClick={() => sortTasksList('Completed')}>{props.translate('Active')}</button>
+      </div>
         {tasks.map((task) => {
           const { id, title, description, date, completed } = task;
           return (

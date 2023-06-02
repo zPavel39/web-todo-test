@@ -18,6 +18,7 @@ class TaskStore {
   ];
   idSearch: number = 0;
   validation = true;
+  sort = ''
   constructor() {
     makeAutoObservable(this);
   }
@@ -60,6 +61,41 @@ class TaskStore {
     }
     return this.tasks;
   };
+
+  // Сортировка задач по значению
+  sortTasksList = (sort: string) => {
+    if (sort === this.sort) {
+      return this.tasks
+    } else {
+      this.sort = sort
+      // По выполненным
+      if (this.sort === 'Completed') {
+        this.tasks = this.tasks.sort((a, b) => {
+          if (a.completed) {
+            return 1
+          }
+          if (b.completed) {
+            return -1
+          }
+          return 0
+        })
+        return this.tasks
+      }
+      // По Дате
+      if (this.sort === 'Date') {
+        this.tasks = this.tasks.sort((a, b) => {
+          if (a.date >= b.date) {
+            return 1
+          }
+          if (a.date < b.date) {
+            return -1
+          }
+          return 0
+        })
+        return this.tasks
+      }
+    }
+  }
 }
 
 export default new TaskStore();
