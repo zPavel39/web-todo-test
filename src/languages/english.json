@@ -10,7 +10,8 @@
         "Description": "Description",
         "DescriptionPH": "Enter description",
         "Sort": "Sorting by",
-        "Active": "Active"
-
+        "Active": "Active",
+        "Add task": "Add task",
+        "Hide form": "Hide form"
     }
 }
